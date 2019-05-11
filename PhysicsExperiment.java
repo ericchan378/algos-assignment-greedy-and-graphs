@@ -1,7 +1,7 @@
 /**
  * Physics Experiment
  * Author: Your Name and Carolyn Yao
- * Does this compile or finish running within 5 seconds? Y/N
+ * Does this compile or finish running within 5 seconds? Y
  */
 
 /**
@@ -39,6 +39,39 @@ public class PhysicsExperiment {
 
     // Your code goes here
 
+    int signedUp = 0;
+    
+    while(signedUp != numSteps)
+    {
+    	int consecutive = 0;
+    	int bestStudent = 0;
+    	
+    	for(int i = 1;i <= numStudents; i++)
+    	{
+			int n = signedUp ;
+			int c = 0;
+			while(n+1 <= numSteps && signUpTable[i][n + 1] == 1)
+			{
+				n++;
+				c++;
+			}
+			if(consecutive < c)
+			{
+				consecutive = c;
+				bestStudent = i;
+			}
+    	}
+    	
+
+    	for(int i = 0; i < consecutive; i++)
+    	{
+    		scheduleTable[bestStudent][signedUp+1] = 1;
+    		signedUp++;
+    	}
+    	
+
+    }
+    
     return scheduleTable;
   }
 
